@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Hub 📊✨</title>
+    <title>מרכז ניתוח נתונים - Mandex 💸</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -66,26 +66,13 @@
             align-items: center;
         }
         .tableau-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background: #f4f4f4;
-            border-radius: 8px;
             margin-bottom: 1rem;
-        }
-        .tableau-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
         }
         .description {
             font-size: 1rem;
             color: #555;
             margin-top: 1rem;
+            line-height: 1.6;
         }
         footer {
             background: linear-gradient(90deg, #283e51, #4b79a1);
@@ -122,91 +109,166 @@
 </head>
 <body>
     <header>
-        <h1>Data Analytics Hub 📊✨</h1>
-        <p>Unleash the Power of Data with Tableau! 🚀</p>
+        <h1>מרכז ניתוח נתונים - Mandex 💸</h1>
+        <p>ניהול תשלומי לקוחות בצורה חכמה ופשוטה! 🚀</p>
     </header>
     <nav>
-        <a href="#overview">Overview</a>
-        <a href="#dashboard1">Sales Trends</a>
-        <a href="#dashboard2">Performance Metrics</a>
-        <a href="#dashboard3">Market Insights</a>
+        <a href="#overview">סקירה כללית</a>
+        <a href="#dashboard1">עלות וזמן עיבוד</a>
+        <a href="#dashboard2">ניתוח עיכובים</a>
+        <a href="#dashboard3">מעקב ביצועים</a>
     </nav>
     <div class="container">
         <div class="section" id="overview">
-            <h2>Welcome to Our Analytics World <span class="animate-emoji">🌍</span></h2>
+            <h2>ברוכים הבאים למרכז הנתונים שלנו <span class="animate-emoji">🌍</span></h2>
             <p class="description">
-                Dive into our interactive Tableau dashboards to explore data like never before! 
-                From sales trends to market insights, our visualizations make data fun and insightful. 
-                Scroll down to explore each dashboard and uncover the stories behind the numbers! 📈😄
+                האתר הזה מוקדש לניהול תשלומי לקוחות בחברת Mandex. כאן תוכלו למצוא לוחות מחוונים אינטראקטיביים של Tableau שמציגים נתונים על עלות לקוח, זמן עיבוד תשלומים, ניתוח עיכובים ומעקב ביצועים. המערכת מאפשרת מעקב אחר תשלומים, זיהוי דפוסים וקבלת החלטות מבוססות נתונים. גללו מטה כדי לחקור את לוחות המחוונים! 📈😄
             </p>
         </div>
         <div class="section" id="dashboard1">
-            <h2>Sales Trends Dashboard <span class="animate-emoji">📊</span></h2>
-            <div class="tableau-container">
-                <iframe src="https://public.tableau.com/views/Candex/sheet2?:language=en-US&:display_count=n&:origin=viz_share_link" 
-                        title="Sales Trends Dashboard"></iframe>
+            <h2>עלות לקוח וזמן עיבוד תשלום <span class="animate-emoji">💰</span></h2>
+            <div class="tableau-container" id="viz1752955039211" style="position: relative">
+                <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/_1/_17529550096640/sheet2/1_rss.png" style="border: none" /></a></noscript>
+                <object class="tableauViz" style="display:none;">
+                    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+                    <param name="embed_code_version" value="3" />
+                    <param name="site_root" value="" />
+                    <param name="name" value="_17529550096640/sheet2" />
+                    <param name="tabs" value="yes" />
+                    <param name="toolbar" value="yes" />
+                    <param name="static_image" value="https://public.tableau.com/static/images/_1/_17529550096640/sheet2/1.png" />
+                    <param name="animate_transition" value="yes" />
+                    <param name="display_static_image" value="yes" />
+                    <param name="display_spinner" value="yes" />
+                    <param name="display_overlay" value="yes" />
+                    <param name="display_count" value="yes" />
+                    <param name="language" value="en-US" />
+                </object>
             </div>
+            <script type="text/javascript">
+                var divElement = document.getElementById('viz1752955039211');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.minWidth = '1000px';
+                    vizElement.style.maxWidth = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 0.75) + 'px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.minWidth = '1000px';
+                    vizElement.style.maxWidth = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 0.75) + 'px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 1.77) + 'px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
             <p class="description">
-                Explore sales trends over time with this dynamic dashboard. 
-                Track performance, identify patterns, and make data-driven decisions! 🚀
+                לוח מחוונים זה מציג את עלות הלקוחות וזמן עיבוד התשלומים. תוכלו לעקוב אחר עלויות ולשפר את יעילות התהליכים! 🚀
+                <br><strong>סוגי תרשימים:</strong> תרשימי קו, תרשימי עמודות, תרשימי פיזור.
             </p>
         </div>
         <div class="section" id="dashboard2">
-            <h2>Performance Metrics Dashboard <span class="animate-emoji">📈</span></h2>
-            <div class="tableau-container">
-                <iframe src="https://public.tableau.com/views/Candex/sheet5?:language=en-US&:display_count=n&:origin=viz_share_link" 
-                        title="Performance Metrics Dashboard"></iframe>
+            <h2>ניתוח עיכובי תשלומים <span class="animate-emoji">⏳</span></h2>
+            <div class="tableau-container" id="viz1752955077975" style="position: relative">
+                <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/_1/_17529550096640/sheet5/1_rss.png" style="border: none" /></a></noscript>
+                <object class="tableauViz" style="display:none;">
+                    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+                    <param name="embed_code_version" value="3" />
+                    <param name="site_root" value="" />
+                    <param name="name" value="_17529550096640/sheet5" />
+                    <param name="tabs" value="yes" />
+                    <param name="toolbar" value="yes" />
+                    <param name="static_image" value="https://public.tableau.com/static/images/_1/_17529550096640/sheet5/1.png" />
+                    <param name="animate_transition" value="yes" />
+                    <param name="display_static_image" value="yes" />
+                    <param name="display_spinner" value="yes" />
+                    <param name="display_overlay" value="yes" />
+                    <param name="display_count" value="yes" />
+                    <param name="language" value="en-US" />
+                </object>
             </div>
+            <script type="text/javascript">
+                var divElement = document.getElementById('viz1752955077975');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.minWidth = '1000px';
+                    vizElement.style.maxWidth = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 0.75) + 'px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.minWidth = '1000px';
+                    vizElement.style.maxWidth = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 0.75) + 'px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 1.77) + 'px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
             <p class="description">
-                Dive into key performance metrics to evaluate efficiency and success. 
-                This dashboard helps you stay on top of your game! 🏆
+                לוח מחוונים זה מנתח עיכובי תשלומים ומספק תובנות על גורמי עיכוב. שפרו את ניהול הזמן שלכם! 🏆
+                <br><strong>סוגי תרשימים:</strong> תרשימי עוגה, תרשימי מדדים, טבלאות.
             </p>
         </div>
         <div class="section" id="dashboard3">
-            <h2>Market Insights Dashboard <span class="animate-emoji">🔍</span></h2>
-            <div class="tableau-container">
-                <iframe src="https://public.tableau.com/views/Candex/-?:language=en-US&:display_count=n&:origin=viz_share_link" 
-                        title="Market Insights Dashboard"></iframe>
+            <h2>מעקב ביצוע תשלום עיכובים ותדירות <span class="animate-emoji">📋</span></h2>
+            <div class="tableau-container" id="viz1752955098189" style="position: relative">
+                <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/_1/_17529550096640/-/1_rss.png" style="border: none" /></a></noscript>
+                <object class="tableauViz" style="display:none;">
+                    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+                    <param name="embed_code_version" value="3" />
+                    <param name="site_root" value="" />
+                    <param name="name" value="_17529550096640/-" />
+                    <param name="tabs" value="yes" />
+                    <param name="toolbar" value="yes" />
+                    <param name="static_image" value="https://public.tableau.com/static/images/_1/_17529550096640/-/1.png" />
+                    <param name="animate_transition" value="yes" />
+                    <param name="display_static_image" value="yes" />
+                    <param name="display_spinner" value="yes" />
+                    <param name="display_overlay" value="yes" />
+                    <param name="display_count" value="yes" />
+                    <param name="language" value="en-US" />
+                </object>
             </div>
+            <script type="text/javascript">
+                var divElement = document.getElementById('viz1752955098189');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.minWidth = '1000px';
+                    vizElement.style.maxWidth = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 0.75) + 'px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.minWidth = '1000px';
+                    vizElement.style.maxWidth = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 0.75) + 'px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.minHeight = '850px';
+                    vizElement.style.maxHeight = (divElement.offsetWidth * 1.77) + 'px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
             <p class="description">
-                Uncover market trends and insights to stay ahead of the competition. 
-                This dashboard is your key to strategic planning! 🌟
+                לוח מחוונים זה עוקב אחר ביצועי תשלומים, עיכובים ותדירותם. קבלו שליטה מלאה על תהליכי התשלום! 🌟
+                <br><strong>סוגי תרשימים:</strong> מפות חום, תרשימי בועות, תרשימי זרימה.
             </p>
         </div>
     </div>
     <footer>
-        <p>Powered by Data & Love 💖 | © 2025 Data Analytics Hub</p>
+        <p>מופעל על ידי נתונים ואהבה 💖 | © 2025 Mandex</p>
     </footer>
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add animation on scroll
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            section.style.opacity = 0;
-            section.style.transform = 'translateY(20px)';
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
