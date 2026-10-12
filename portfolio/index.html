@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --surface-2: #f4f4f2;
+      --text: #1c1917;
+      --muted: #6b6560;
+      --border: #e7e5e2;
+      --accent: #4f46e5;
+      --accent-soft: #eef0ff;
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f0f12;
+        --surface: #17171c;
+        --surface-2: #1f1f26;
+        --text: #f2f1ef;
+        --muted: #a19d98;
+        --border: #2a2a33;
+        --accent: #8b8cff;
+        --accent-soft: #23234a;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f0f12;
+      --surface: #17171c;
+      --surface-2: #1f1f26;
+      --text: #f2f1ef;
+      --muted: #a19d98;
+      --border: #2a2a33;
+      --accent: #8b8cff;
+      --accent-soft: #23234a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .2s, color .2s;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 700px) { .wrap { padding: 0 32px; } }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; text-decoration: none; letter-spacing: -.02em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: .92rem; font-weight: 500;
+      padding: 6px 10px; border-radius: 8px;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+    .icon-btn {
+      border: 1px solid var(--border); background: var(--surface); color: var(--text);
+      width: 36px; height: 36px; border-radius: 10px; cursor: pointer; font-size: 1rem;
+      display: inline-grid; place-items: center; margin-inline-start: 6px;
+    }
+    @media (max-width: 640px) { .nav-links a.hide-sm { display: none; } }
+
+    /* Hero */
+    .hero { padding: 88px 0 64px; display: grid; gap: 40px; align-items: center; }
+    @media (min-width: 820px) { .hero { grid-template-columns: 1.4fr 1fr; padding: 120px 0 88px; } }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .85rem; font-weight: 600; color: var(--accent);
+      background: var(--accent-soft); padding: 6px 12px; border-radius: 999px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
+    h1 { font-size: clamp(2.3rem, 6vw, 3.8rem); line-height: 1.08; letter-spacing: -.035em; margin: 18px 0 16px; font-weight: 800; }
+    h1 .accent { color: var(--accent); }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600;
+      padding: 12px 20px; border-radius: 12px; font-size: .95rem; transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 35%, transparent); }
+    .btn-ghost { border: 1px solid var(--border); background: var(--surface); }
+    .avatar {
+      aspect-ratio: 1; width: 100%; max-width: 340px; justify-self: center; border-radius: 32px;
+      background: linear-gradient(135deg, var(--accent), #ec4899);
+      display: grid; place-items: center; color: #fff; font-size: 5rem; font-weight: 800;
+      box-shadow: var(--shadow); overflow: hidden; position: relative;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Sections */
+    section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .section-head { margin-bottom: 36px; }
+    .section-head .kicker { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); letter-spacing: -.025em; margin: 6px 0 0; }
+
+    /* About */
+    .about { display: grid; gap: 32px; }
+    @media (min-width: 820px) { .about { grid-template-columns: 1.5fr 1fr; } }
+    .about p { color: var(--muted); font-size: 1.05rem; margin: 0 0 14px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-content: start; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px 12px; text-align: center; }
+    .stat b { display: block; font-size: 1.8rem; letter-spacing: -.03em; }
+    .stat span { font-size: .8rem; color: var(--muted); }
+
+    /* Projects */
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .chip {
+      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+      padding: 7px 14px; border-radius: 999px; font: inherit; font-size: .88rem; font-weight: 500; cursor: pointer;
+    }
+    .chip.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card-cover { height: 160px; display: grid; place-items: center; font-size: 3rem; }
+    .card-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+    .card h3 { margin: 0 0 6px; font-size: 1.15rem; letter-spacing: -.01em; }
+    .card p { margin: 0 0 16px; color: var(--muted); font-size: .95rem; flex: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .tag { font-size: .75rem; font-weight: 600; background: var(--surface-2); color: var(--muted); padding: 4px 10px; border-radius: 6px; }
+    .card-link { font-weight: 600; font-size: .9rem; color: var(--accent); text-decoration: none; }
+    .card-link:hover { text-decoration: underline; }
+
+    /* Experience timeline */
+    .timeline { position: relative; padding-inline-start: 28px; }
+    .timeline::before { content: ""; position: absolute; inset-inline-start: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+    .t-item { position: relative; padding-bottom: 32px; }
+    .t-item:last-child { padding-bottom: 0; }
+    .t-item::before {
+      content: ""; position: absolute; inset-inline-start: -28px; top: 6px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent);
+    }
+    .t-when { font-size: .85rem; color: var(--muted); font-weight: 600; }
+    .t-item h3 { margin: 2px 0; font-size: 1.1rem; }
+    .t-item .org { color: var(--accent); font-weight: 600; font-size: .95rem; }
+    .t-item p { margin: 8px 0 0; color: var(--muted); }
+
+    /* Skills */
+    .skills { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+    .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 20px; }
+    .skill-group h3 { margin: 0 0 12px; font-size: 1rem; display: flex; gap: 8px; align-items: center; }
+    .skill-group .tags { margin: 0; }
+
+    /* Contact */
+    .contact {
+      background: linear-gradient(135deg, var(--accent), #ec4899); color: #fff; border-radius: 28px;
+      padding: 48px 24px; text-align: center;
+    }
+    .contact h2 { color: #fff; }
+    .contact p { opacity: .9; max-width: 32em; margin: 12px auto 28px; font-size: 1.05rem; }
+    .contact .btn-primary { background: #fff; color: #1c1917; box-shadow: none; }
+    .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+    .socials a { color: #fff; opacity: .9; font-weight: 600; font-size: .92rem; text-decoration: none; padding: 6px 12px; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; }
+    .socials a:hover { opacity: 1; background: rgba(255,255,255,.12); }
+
+    footer { padding: 32px 0 48px; text-align: center; color: var(--muted); font-size: .88rem; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    ============================================================
+    ✏️  EDIT YOUR CONTENT HERE
+    Everything shown on the page comes from the PROFILE object
+    in the <script> at the bottom. Change the text, add/remove
+    projects, jobs and skills there — no HTML changes needed.
+    ============================================================
+  -->
+
+  <nav>
+    <div class="wrap">
+      <a href="#top" class="logo" id="logo"></a>
+      <div class="nav-links">
+        <a href="#about" class="hide-sm">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience" class="hide-sm">Experience</a>
+        <a href="#contact">Contact</a>
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+    <header class="hero">
+      <div class="reveal">
+        <span class="eyebrow" id="status"><span class="dot"></span><span></span></span>
+        <h1 id="headline"></h1>
+        <p class="lead" id="tagline"></p>
+        <div class="cta">
+          <a href="#projects" class="btn btn-primary">View my work →</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="avatar reveal" id="avatar"></div>
+    </header>
+
+    <section id="about">
+      <div class="section-head reveal"><div class="kicker">About</div><h2>A little about me</h2></div>
+      <div class="about">
+        <div class="reveal" id="about-text"></div>
+        <div class="stats reveal" id="stats"></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head reveal"><div class="kicker">Projects</div><h2>Selected work</h2></div>
+      <div class="filters reveal" id="filters"></div>
+      <div class="grid" id="project-grid"></div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head reveal"><div class="kicker">Experience</div><h2>Where I've been</h2></div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head reveal"><div class="kicker">Skills</div><h2>What I work with</h2></div>
+      <div class="skills" id="skill-groups"></div>
+    </section>
+
+    <section id="contact">
+      <div class="contact reveal">
+        <h2>Let's work together</h2>
+        <p id="contact-text"></p>
+        <a class="btn btn-primary" id="email-btn">✉️ Send me an email</a>
+        <div class="socials" id="socials"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap" id="footer"></div></footer>
+
+  <script>
+    // ============================================================
+    // ✏️  YOUR CONTENT — edit everything below
+    // ============================================================
+    const PROFILE = {
+      name: "Your Name",
+      initials: "YN",
+      photo: "",                       // e.g. "me.jpg" (put the file next to this page). Empty = show initials.
+      status: "Open to new opportunities",
+      headline: "Hi, I'm <span class='accent'>Your Name</span>.<br>I turn ideas into results.",
+      tagline: "A short sentence about what you do, what you care about, and what kind of work you're looking for.",
+
+      about: [
+        "Write a couple of sentences about your background — where you studied, what you've worked on, and what gets you excited.",
+        "Add a second paragraph about how you work, or something personal: hobbies, side projects, what you're learning right now."
+      ],
+      stats: [
+        { value: "3+", label: "Years experience" },
+        { value: "10+", label: "Projects" },
+        { value: "2", label: "Languages" }
+      ],
+
+      // category is used by the filter buttons. cover can be an emoji or an image path.
+      projects: [
+        {
+          title: "Mandex Data Center",
+          category: "Data",
+          description: "Interactive Tableau dashboards analyzing customer cost, payment processing time and payment delays.",
+          tags: ["Tableau", "Data analysis", "HTML"],
+          cover: "📊",
+          color: "#e0e7ff",
+          link: "../index.html"
+        },
+        {
+          title: "Project Two",
+          category: "Web",
+          description: "Describe the problem, what you built, and the result. Keep it to one or two sentences.",
+          tags: ["HTML", "CSS", "JavaScript"],
+          cover: "💻",
+          color: "#fce7f3",
+          link: "#"
+        },
+        {
+          title: "Project Three",
+          category: "Design",
+          description: "Another project you're proud of. Link to a live demo, a GitHub repo, or a case study.",
+          tags: ["Figma", "UX"],
+          cover: "🎨",
+          color: "#dcfce7",
+          link: "#"
+        }
+      ],
+
+      experience: [
+        {
+          when: "2024 — Present",
+          role: "Job Title",
+          org: "Company Name",
+          description: "What you do there and one concrete achievement."
+        },
+        {
+          when: "2022 — 2024",
+          role: "Previous Role",
+          org: "Previous Company",
+          description: "Key responsibilities and impact."
+        },
+        {
+          when: "2019 — 2022",
+          role: "B.Sc. / B.A. in Your Field",
+          org: "University Name",
+          description: "Relevant courses, final project, or honors."
+        }
+      ],
+
+      skills: [
+        { icon: "📊", group: "Data", items: ["Excel", "SQL", "Tableau", "Python"] },
+        { icon: "💻", group: "Web", items: ["HTML", "CSS", "JavaScript"] },
+        { icon: "🤝", group: "Soft skills", items: ["Communication", "Problem solving", "Teamwork"] },
+        { icon: "🌍", group: "Languages", items: ["Hebrew (native)", "English (fluent)"] }
+      ],
+
+      contactText: "Have a project in mind, a job opening, or just want to say hi? My inbox is always open.",
+      email: "you@example.com",
+      socials: [
+        { label: "LinkedIn", url: "https://www.linkedin.com/" },
+        { label: "GitHub", url: "https://github.com/" }
+      ]
+    };
+
+    // ============================================================
+    // Rendering — no need to edit below this line
+    // ============================================================
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const isImg = s => /\.(png|jpe?g|gif|webp|svg)$/i.test(s) || s.startsWith("http");
+
+    document.title = `${PROFILE.name} — Portfolio`;
+    $("logo").innerHTML = `${esc(PROFILE.name.split(" ")[0])}<span>.</span>`;
+    $("status").lastElementChild.textContent = PROFILE.status;
+    $("headline").innerHTML = PROFILE.headline;
+    $("tagline").textContent = PROFILE.tagline;
+    $("avatar").innerHTML = PROFILE.photo
+      ? `<img src="${esc(PROFILE.photo)}" alt="${esc(PROFILE.name)}">`
+      : esc(PROFILE.initials);
+
+    $("about-text").innerHTML = PROFILE.about.map(p => `<p>${esc(p)}</p>`).join("");
+    $("stats").innerHTML = PROFILE.stats.map(s => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
+
+    // Projects + filters
+    const categories = ["All", ...new Set(PROFILE.projects.map(p => p.category))];
+    let activeCat = "All";
+    function renderProjects() {
+      $("filters").innerHTML = categories.map(c =>
+        `<button class="chip ${c === activeCat ? "active" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+      $("project-grid").innerHTML = PROFILE.projects
+        .filter(p => activeCat === "All" || p.category === activeCat)
+        .map(p => `
+          <article class="card">
+            <div class="card-cover" style="background:${esc(p.color || "var(--surface-2)")}">
+              ${isImg(p.cover) ? `<img src="${esc(p.cover)}" alt="">` : esc(p.cover)}
+            </div>
+            <div class="card-body">
+              <h3>${esc(p.title)}</h3>
+              <p>${esc(p.description)}</p>
+              <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+              ${p.link ? `<a class="card-link" href="${esc(p.link)}">View project →</a>` : ""}
+            </div>
+          </article>`).join("");
+    }
+    $("filters").addEventListener("click", e => {
+      const cat = e.target.dataset.cat;
+      if (cat) { activeCat = cat; renderProjects(); }
+    });
+    renderProjects();
+
+    $("timeline").innerHTML = PROFILE.experience.map(x => `
+      <div class="t-item reveal">
+        <div class="t-when">${esc(x.when)}</div>
+        <h3>${esc(x.role)}</h3>
+        <div class="org">${esc(x.org)}</div>
+        <p>${esc(x.description)}</p>
+      </div>`).join("");
+
+    $("skill-groups").innerHTML = PROFILE.skills.map(g => `
+      <div class="skill-group reveal">
+        <h3>${esc(g.icon)} ${esc(g.group)}</h3>
+        <div class="tags">${g.items.map(i => `<span class="tag">${esc(i)}</span>`).join("")}</div>
+      </div>`).join("");
+
+    $("contact-text").textContent = PROFILE.contactText;
+    $("email-btn").href = `mailto:${PROFILE.email}`;
+    $("socials").innerHTML = PROFILE.socials.map(s =>
+      `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join("");
+    $("footer").textContent = `© ${new Date().getFullYear()} ${PROFILE.name}`;
+
+    // Theme toggle (remembered per browser)
+    const root = document.documentElement;
+    try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+    $("theme-toggle").addEventListener("click", () => {
+      const dark = root.dataset.theme
+        ? root.dataset.theme === "dark"
+        : matchMedia("(prefers-color-scheme: dark)").matches;
+      root.dataset.theme = dark ? "light" : "dark";
+      try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    });
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+    }), { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
